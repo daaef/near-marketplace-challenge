@@ -1,0 +1,27 @@
+{
+  "files": {
+    "main.css": "/near-marketplace-challenge/static/css/main.d87cbb72.chunk.css",
+    "main.js": "/near-marketplace-challenge/static/js/main.cb49cb2f.chunk.js",
+    "main.js.map": "/near-marketplace-challenge/static/js/main.cb49cb2f.chunk.js.map",
+    "runtime-main.js": "/near-marketplace-challenge/static/js/runtime-main.1d43a6ac.js",
+    "runtime-main.js.map": "/near-marketplace-challenge/static/js/runtime-main.1d43a6ac.js.map",
+    "static/css/2.f7888385.chunk.css": "/near-marketplace-challenge/static/css/2.f7888385.chunk.css",
+    "static/js/2.5d3ab4ba.chunk.js": "/near-marketplace-challenge/static/js/2.5d3ab4ba.chunk.js",
+    "static/js/2.5d3ab4ba.chunk.js.map": "/near-marketplace-challenge/static/js/2.5d3ab4ba.chunk.js.map",
+    "static/js/3.141c54c3.chunk.js": "/near-marketplace-challenge/static/js/3.141c54c3.chunk.js",
+    "static/js/3.141c54c3.chunk.js.map": "/near-marketplace-challenge/static/js/3.141c54c3.chunk.js.map",
+    "index.html": "/near-marketplace-challenge/index.html",
+    "static/css/2.f7888385.chunk.css.map": "/near-marketplace-challenge/static/css/2.f7888385.chunk.css.map",
+    "static/css/main.d87cbb72.chunk.css.map": "/near-marketplace-challenge/static/css/main.d87cbb72.chunk.css.map",
+    "static/js/2.5d3ab4ba.chunk.js.LICENSE.txt": "/near-marketplace-challenge/static/js/2.5d3ab4ba.chunk.js.LICENSE.txt",
+    "static/media/bootstrap-icons.css": "/near-marketplace-challenge/static/media/bootstrap-icons.f2539a50.woff2",
+    "static/media/sandwich.2d312449.jpg": "/near-marketplace-challenge/static/media/sandwich.2d312449.jpg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.1d43a6ac.js",
+    "static/css/2.f7888385.chunk.css",
+    "static/js/2.5d3ab4ba.chunk.js",
+    "static/css/main.d87cbb72.chunk.css",
+    "static/js/main.cb49cb2f.chunk.js"
+  ]
+}
