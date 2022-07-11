@@ -445,3 +445,8 @@ div.right-eye {
 .cat.attentive .iris:after {
     animation: irisShrink 6s infinite ease-in-out;
 }
+
+.bg img {
+    width: 100%;
+    object-fit: cover;
+}

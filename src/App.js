@@ -5,7 +5,7 @@ import Wallet from "./components/Wallet";
 import {Notification} from "./components/utils/Notifications";
 import Products from "./components/marketplace/Products";
 import Cover from "./components/utils/Cover";
-import coverImg from "./assets/img/sandwich.jpg";
+import coverImg from "./assets/img/cryp-kits-BG.png";
 import "./App.css";
 import {BrowserRouter, Link, Route, Routes} from "react-router-dom";
 import Generator from "./components/marketplace/Generator";
@@ -49,7 +49,7 @@ const App = function AppWrapper() {
                     </main>
                 </Container>
             ) : (
-                <Cover name="Street Food" login={login} coverImg={coverImg}/>
+                <Cover name="Crypto Kitties" login={login} coverImg={coverImg}/>
             )}
         </BrowserRouter>
     );
