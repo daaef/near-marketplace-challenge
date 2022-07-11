@@ -1,85 +1,96 @@
-import React, { useEffect, useState, useCallback } from "react";
-import { toast } from "react-toastify";
-import AddProduct from "./AddProduct";
-import Product from "./Product";
+import React, {useCallback, useEffect, useState} from "react";
+import {toast} from "react-toastify";
 import Loader from "../utils/Loader";
-import { Row } from "react-bootstrap";
-import { NotificationSuccess, NotificationError } from "../utils/Notifications";
-import {
-    getProducts as getProductList,
-    buyProduct,
-    createProduct,
-} from "../../utils/marketplace";
+import {Button, Row} from "react-bootstrap";
+import {NotificationError, NotificationSuccess} from "../utils/Notifications";
+import {buyCat, cloneCat, getCats as getCatList,} from "../../utils/marketplace";
+import {Link} from "react-router-dom";
+import emptyImg from "../../assets/img/empty.jpg"
+import Product from "./Product";
+
+window.Buffer = window.Buffer || require("buffer").Buffer;
 
 const Products = () => {
-    const [products, setProducts] = useState([]);
+    const [cats, setCats] = useState([]);
     const [loading, setLoading] = useState(false);
 
-    const getProducts = useCallback(async () => {
+    const getCats = useCallback(async () => {
         try {
             setLoading(true);
-            setProducts(await getProductList());
+            setCats(await getCatList());
         } catch (error) {
-            console.log({ error });
+            console.log({error});
         } finally {
             setLoading(false);
         }
-    });
+    }, []);
 
-    const addProduct = async (data) => {
+    const buy = async (id, price) => {
         try {
-            setLoading(true);
-            createProduct(data).then((resp) => {
-                getProducts();
-            });
-            toast(<NotificationSuccess text="Product added successfully." />);
+            await buyCat({
+                id,
+                price,
+            }).then((resp) => getCats());
+            toast(<NotificationSuccess text="Cat bought successfully"/>);
         } catch (error) {
-            console.log({ error });
-            toast(<NotificationError text="Failed to create a product." />);
+            toast(<NotificationError text="Failed to purchase Cat."/>);
         } finally {
             setLoading(false);
         }
     };
 
-    const buy = async (id, price) => {
+    const clone = async (id, clonePrice) => {
         try {
-            await buyProduct({
+            await cloneCat({
                 id,
-                price,
-            }).then((resp) => getProducts());
-            toast(<NotificationSuccess text="Product bought successfully" />);
+                clonePrice,
+            }).then((resp) => getCats());
+            toast(<NotificationSuccess text="Cat Cloned successfully"/>);
         } catch (error) {
-            toast(<NotificationError text="Failed to purchase product." />);
+            toast(<NotificationError text="Failed to Clone Cat."/>);
         } finally {
             setLoading(false);
         }
     };
 
     useEffect(() => {
-        getProducts();
-    }, []);
+        getCats().then();
+    }, [getCats]);
 
     return (
         <>
             {!loading ? (
                 <>
                     <div className="d-flex justify-content-between align-items-center mb-4">
-                        <h1 className="fs-4 fw-bold mb-0">Street Food</h1>
-                        <AddProduct save={addProduct} />
+                        <h1 className="fs-4 fw-bold mb-0">Crypto Kitty Gallery</h1>
+                        <Button
+                            variant="dark"
+                            className="rounded-pill px-0"
+                            style={{width: "38px"}}
+                        >
+                            <Link to="/generator" className="text-white">
+                                <i className="bi bi-plus"></i>
+                            </Link>
+                        </Button>
                     </div>
                     <Row xs={1} sm={2} lg={3} className="g-3  mb-5 g-xl-4 g-xxl-5">
-                        {products.map((_product) => (
+                        {cats.map((_cat) => (
                             <Product
-                                product={{
-                                    ..._product,
+                                key={_cat.id}
+                                cat={{
+                                    ..._cat,
                                 }}
                                 buy={buy}
+                                clone={clone}
                             />
                         ))}
+                        <div className="empty-state">
+                            {cats.length === 0 && (<img className="" src={emptyImg} alt=""/>)}
+                        </div>
                     </Row>
                 </>
             ) : (
-                <Loader />
+                <Loader/>
             )}
         </>
     );

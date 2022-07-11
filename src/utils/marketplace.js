@@ -1,18 +1,25 @@
-import { v4 as uuid4 } from "uuid";
-import { parseNearAmount } from "near-api-js/lib/utils/format";
+import {v4 as uuid4} from "uuid";
+import {parseNearAmount} from "near-api-js/lib/utils/format";
+import {contract} from "./near";
 
 const GAS = 100000000000000;
 
-export function createProduct(product) {
-    product.id = uuid4();
-    product.price = parseNearAmount(product.price + "");
-    return window.contract.setProduct({ product });
+export function createCat(cat) {
+    cat.id = uuid4();
+    cat.price = parseNearAmount(cat.price + "");
+    console.log('creating cat', cat)
+    return contract.setCat({cat});
 }
 
-export function getProducts() {
-    return window.contract.getProducts();
+export function getCats() {
+    console.log('getting cats')
+    return contract.getCats();
 }
 
-export async function buyProduct({ id, price }) {
-    await window.contract.buyProduct({ productId: id }, GAS, price);
+export async function buyCat({id, price}) {
+    await contract.buyCat({catId: id}, GAS, price);
+}
+
+export async function cloneCat({id, clonePrice}) {
+    await contract.cloneCat({catId: id}, GAS, clonePrice);
 }

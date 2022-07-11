@@ -1,6 +1,7 @@
 import React from "react";
 import { Dropdown, Stack, Spinner } from "react-bootstrap";
 
+
 const Wallet = ({ address, amount, symbol, destroy }) => {
     if (address) {
         return (

@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React, {useState} from "react";
 import PropTypes from "prop-types";
-import { Button, Modal, Form, FloatingLabel } from "react-bootstrap";
+import {Button, FloatingLabel, Form, Modal} from "react-bootstrap";
 
-const AddProduct = ({ save }) => {
+const AddProduct = ({save}) => {
     const [name, setName] = useState("");
     const [image, setImage] = useState("");
     const [description, setDescription] = useState("");
@@ -20,9 +20,9 @@ const AddProduct = ({ save }) => {
                 onClick={handleShow}
                 variant="dark"
                 className="rounded-pill px-0"
-                style={{ width: "38px" }}
+                style={{width: "38px"}}
             >
-                <i class="bi bi-plus"></i>
+                <i className="bi bi-plus"></i>
             </Button>
             <Modal show={show} onHide={handleClose} centered>
                 <Modal.Header closeButton>
@@ -64,7 +64,7 @@ const AddProduct = ({ save }) => {
                             <Form.Control
                                 as="textarea"
                                 placeholder="description"
-                                style={{ height: "80px" }}
+                                style={{height: "80px"}}
                                 onChange={(e) => {
                                     setDescription(e.target.value);
                                 }}

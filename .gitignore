@@ -3,6 +3,10 @@
 # dependencies
 /node_modules
 /.pnp
+/.idea
+/.vscode
+.idea
+.vscode
 .pnp.js
 
 # testing
@@ -21,3 +25,5 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+.idea/jsLinters/eslint.xml
+.vscode/settings.json
