@@ -5,10 +5,8 @@ import {Badge, Button, Card, Col, Stack} from "react-bootstrap";
 import Cat from "./Cat";
 
 const Product = ({cat, buy, clone}) => {
-    console.log('clone from product', clone)
     const {id, price, name, cloned, clonePrice, sold, owner, dna} =
         cat;
-    console.log('clonePrice from product', clonePrice)
 
     const triggerBuy = () => {
         buy(id, price);

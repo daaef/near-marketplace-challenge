@@ -7,12 +7,10 @@ const GAS = 100000000000000;
 export function createCat(cat) {
     cat.id = uuid4();
     cat.price = parseNearAmount(cat.price + "");
-    console.log('creating cat', cat)
     return contract.setCat({cat});
 }
 
 export function getCats() {
-    console.log('getting cats')
     return contract.getCats();
 }
 

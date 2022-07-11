@@ -1,6 +1,6 @@
 {
   "homepage": "https://daaef.github.io/near-marketplace-challenge",
-  "name": "near-marketplace",
+  "name": "crypto-kitties",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -13,6 +13,7 @@
     "buffer": "^6.0.3",
     "dayjs": "^1.11.3",
     "gh-pages": "^4.0.0",
+    "hexy": "^0.3.4",
     "near-api-js": "^0.44.2",
     "prop-types": "^15.8.1",
     "react": "^18.1.0",
