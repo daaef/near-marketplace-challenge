@@ -29,3 +29,27 @@ export class Cat {
 }
 
 export const listedCats = new PersistentUnorderedMap<string, Cat>("CAT_LIST");
+
+
+
+@nearBindgen
+export class CatSell {
+  //Owner of the buy or clone
+  owner: string;
+
+  //ID of the cat, which cloned or sold
+  catId: string;
+
+  //If it is clone, isBuy is false. Otherwise, it is true
+  isBuy: boolean;
+
+  public static fromPayload(id: string, isBuy:boolean ): CatSell {
+    const catSell = new CatSell();
+    catSell.catId = id;
+    catSell.owner = context.sender;
+    catSell.isBuy = isBuy;
+    return catSell;
+  }
+}
+
+export const soldCats = new PersistentUnorderedMap<string, CatSell>("CAT_SELL");

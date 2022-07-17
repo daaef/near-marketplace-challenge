@@ -1,4 +1,4 @@
-import { Cat, listedCats } from "./model";
+import {Cat, CatSell, listedCats, soldCats} from "./model";
 import { ContractPromiseBatch, context } from "near-sdk-as";
 
 export function setCat(cat: Cat): void {
@@ -28,6 +28,9 @@ export function buyCat(catId: string): void {
   ContractPromiseBatch.create(cat.owner).transfer(context.attachedDeposit);
   cat.incrementSoldAmount();
   listedCats.set(cat.id, cat);
+
+  //Used (catId + owner) as the key for PersistentUnorderedMap
+  soldCats.set((cat.id + context.sender), CatSell.fromPayload(catId, true));
 }
 
 export function cloneCat(catId: string): Cat | null {
@@ -41,5 +44,8 @@ export function cloneCat(catId: string): Cat | null {
   ContractPromiseBatch.create(cat.owner).transfer(context.attachedDeposit);
   cat.incrementClonedAmount();
   listedCats.set(cat.id, cat);
+
+  //Used (catId + owner) as the key for PersistentUnorderedMap
+  soldCats.set((cat.id + context.sender), CatSell.fromPayload(catId, false));
   return cat;
 }
