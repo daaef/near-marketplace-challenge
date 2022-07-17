@@ -49,3 +49,22 @@ export function cloneCat(catId: string): Cat | null {
   soldCats.set((cat.id + context.sender), CatSell.fromPayload(catId, false));
   return cat;
 }
+
+export function getBuysAndClones(): Cat[] {
+  const cats: Cat[] = [];
+  const catSellKeys = soldCats.keys();
+
+  for(let i=0; i<catSellKeys.length; i++){
+    if(catSellKeys[i].includes(context.sender)){
+      const catId = soldCats.get(catSellKeys[i])?.catId;
+      if(catId) {
+        const cat = listedCats.get(catId);
+        if(cat){
+          cats.push(cat);
+        }
+      }
+    }
+  }
+
+  return cats;
+}
