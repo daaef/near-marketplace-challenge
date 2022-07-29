@@ -44,8 +44,8 @@ const Generator = () => {
             if (data.price === data.clonePrice) throw new Error('Price and ')
             createCat(data).then((resp) => {
                 getCats();
+                toast(<NotificationSuccess text="Kitten Generated successfully."/>);
             });
-            toast(<NotificationSuccess text="Kitten Generated successfully."/>);
         } catch (error) {
             console.log({error});
             toast(<NotificationError text={`${error || 'Failed to create kitten.'}`}/>);
